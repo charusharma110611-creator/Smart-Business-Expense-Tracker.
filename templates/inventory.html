@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inventory</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="main">
+    <h1>Inventory Management</h1>
+    <p>Track and manage your product inventory</p>
+
+    <!-- Inventory Value -->
+    <div class="card remaining">
+        <h3>Total Inventory Value</h3>
+        <p>₹ {{ total_inventory_value }}</p>
+    </div>
+
+    <!-- Add Product Form -->
+    <div class="card form-card">
+        <h3>Add New Product</h3>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="price" placeholder="Price" required>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+
+    <!-- Product List -->
+    <div class="card inventory-card">
+        <h3>Product List</h3>
+        {% if inventory %}
+        <ul class="product-list">
+            {% for item in inventory %}
+            <li>
+                <span>{{ item.name }}</span>
+                <span>₹ {{ item.price }}</span>
+                <span>Qty: {{ item.quantity }}</span>
+                <a href="/delete/product/{{ item.id }}">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h2>No products added.</h2>
+        {% endif %}
+    </div>
+
+    <!-- Low Stock Products -->
+    <div class="card inventory-card">
+        <h3>Low Stock Products</h3>
+        {% if low_stock_items %}
+        <ul class="product-list">
+            {% for item in low_stock_items %}
+            <li class="low-stock">
+                <span>{{ item.name }}</span>
+                <span>Qty: {{ item.quantity }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h2>All products are sufficiently stocked.</h2>
+        {% endif %}
+    </div>
+
+    <a class="back-link" href="/">← Back to Dashboard</a>
+</div>
+</body>
+</html>

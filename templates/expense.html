@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+
+ <head>
+    
+    <meta charset="UTF-8">
+    <title>Expenses</title>
+    <link rel = "stylesheet"  href = "{{ url_for('static', filename='style.css') }}">
+    <meta  name = "viewport"  content = "width=device-width, initial-scale=1.0">
+
+ </head>
+
+ 
+    <body>
+    
+       <div class="main">
+        <h1>Expense Tracker</h1>
+        <p>Manage and track your business expenses</p>
+
+        <div class="card remaining">
+        <h3>Remaining Money</h3>
+        <p style="font-size: 24px; font-weight: bold;">
+            ₹ {{ remaining_money }}
+        </p>
+      </div>
+
+        <!-- Expense Form Card -->
+        <div class="card form-card">
+            <h3>Add New Expense</h3>
+
+            <form method="POST">
+                <input type="text" name="category" placeholder="Expense Category" required>
+
+                <input type="number" name="amount" placeholder="Amount" required>
+
+                <button type="submit">Add Expense</button>
+            </form>
+        </div>
+
+        <!-- Expense List Card -->
+        <div class="card list-card">
+            <h3>Expense List</h3>
+
+            {% if expenses %}
+                <ul class="expense-list">
+                    {% for exp in expenses %}
+                        <li>
+                            <span>{{ exp.category }}</span>
+                            <span>₹ {{ exp.amount }}</span>
+                             <a href="/delete/expense/{{ exp.id }}">Delete</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h2>No expenses added yet.</h2>
+            {% endif %}
+        </div>
+
+        <a class="back-link" href="/">← Back to Dashboard</a>
+      </div>
+ 
+    </body>
+
+    
+</html>

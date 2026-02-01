@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+
+  <head> 
+
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link  rel = "stylesheet"    href = "{{ url_for('static', filename='style.css') }}">
+    <meta  name = "viewport"  content = "width=device-width, initial-scale=1.0">
+
+  </head>
+
+
+  <body>
+
+   <div class = "main">
+      <h1>Business Dashboards</h1>
+      <br>
+      <h2>Inventory and Expense Tracker</h2>
+
+      <form method="POST">
+      <input type="number" name="total_income" placeholder="Enter Total Income"
+           value="{{ total_income }}" required>
+       <button type="submit">Set Income</button>
+      </form>
+
+
+
+    <div class = "card-container">
+
+       <div class = "card products">
+         <h3> Total Products </h3>
+         <p>{{ total_products }}</p>
+       </div>
+
+       <div class = "card expenses">
+         <h3> Total Expenses</h3>
+         <p>{{ total_expenses }}</p>
+       </div>
+
+       <div class="card remaining">
+                <h3>Remaining Money</h3>
+                 <p style="font-size: 24px; font-weight: bold;">
+                ₹ {{ remaining_money }}
+            </p>
+       </div>
+
+    </div>
+
+       <div class="links">
+
+        <a  href = "/inventory"> Go to Inventory. </a><br>
+        <br>
+        <a  href = "/expense"> Go to Expenses. </a>
+       </div>
+      
+   </div>
+
+
+  </body>
+
+
+</html>
