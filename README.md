@@ -65,8 +65,9 @@ Project Name:- " Smart Business Manager "
             pip install flask
        5. Run the application:
             python app.py
-       6. Open your browser and go to:
+       6. click on the address:
            http://127.0.0.1:5000/
+       7. Go to browser and check it.
 
    ## 📂 Project Structure
     - app.py - Main application file  
