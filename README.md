@@ -69,6 +69,12 @@ Project Name:- " Smart Business Manager "
            http://127.0.0.1:5000/
        7. Go to browser and check it.
 
+           OR 
+
+           ## 🌐 Live Demo
+Aap is project ko yahan live dekh sakte hain: [Railway Live Link](https://web-production-b154c.up.railway.app/)
+
+
    ## 📂 Project Structure
     - app.py - Main application file  
     - templates/ - HTML files (dashboard, expense, inventory pages)  
